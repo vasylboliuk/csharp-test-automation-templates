@@ -43,10 +43,10 @@ namespace test_automation_dotnet_template.test.testmethods
         [Test]
         public void TestLoggerSerilog()
         {
-            var customLogger = LoggManager.GetInstance().SomeInt();
+            var customLogger = LogManager.GetInstance().SomeInt();
             Console.WriteLine(customLogger);
 
-            LoggManager.GetInstance().GetLogger();
+            LogManager.GetInstance().GetLogger();
 
 
             var car1 = new CarDto("Tesla Model S", 2020);

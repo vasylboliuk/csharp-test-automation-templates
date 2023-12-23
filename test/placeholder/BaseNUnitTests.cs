@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace test_automation_dotnet_template
+namespace test_automation_dotnet_template.test.placeholder
 {
-    internal class Class1
+    public class BaseNUnitTests
     {
     }
 }
