@@ -40,7 +40,7 @@ namespace test_automation_dotnet_template.src.automation.config
 
         private void LoadEnvironmentProperties()
         {
-            var environment = String.Empty; // here need to add get ExecutionEnvironment Property
+            var environment = String.Empty; // TODO here need to add get ExecutionEnvironment Property
             if (String.IsNullOrEmpty(environment))
             {
                 environment = "dev";
@@ -49,12 +49,12 @@ namespace test_automation_dotnet_template.src.automation.config
             Log.Information("Automation tests run on Environment: [{@envName}]");
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
-            string environmentFile = $"{projectDirectory}\\{ENVIRONMENT_PATH}\\{environment}\\{ENVIRONMENT_FILE}";
+            string environmentFile = Path.Combine(projectDirectory, ENVIRONMENT_PATH, environment, ENVIRONMENT_FILE);
             Log.Information("Read environments file from resources: [{@environmentFile}]");
             ServiceSetting = DtoConverter.JsonFileToDto<Dictionary<String, EnvironmentConfigDto>>(environmentFile);
             if (ServiceSetting == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Provided invalid Environment Name");
             }
         }
 
@@ -63,20 +63,15 @@ namespace test_automation_dotnet_template.src.automation.config
             return Instance.ServiceSetting[settingName];
         }
 
-
-        /*        private string GetExecutionEnvironmentProp()
+        /*
+         Need to update with getting property from config file
+         private string GetExecutionEnvironmentProp()
                 {
                     var configurationLocation = Assembly.GetEntryAssembly()
                 .GetCustomAttribute<ConfigurationLocationAttribute>()
                 .ConfigurationLocation;
                     Console.WriteLine($"Should get config from {configurationLocation}");
                 }*/
-
-
-
-
-
-
-
     }
+    
 }
