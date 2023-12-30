@@ -8,7 +8,7 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace fw_webui_selenium_nunit.test.saucedemo.ui;
 
-public class TestSimpleNavigatePage: BaseNUnitUiTest
+public class TestDummyHardCodedDriverPathSimpleNavigatePage: BaseNUnitUiTest
 {
     private IWebDriver _driver;
     
