@@ -19,6 +19,7 @@ public class TLDriverFactory
         if (null == tlDriver.Value)
         {
             SetWebDriver(browserType);
+            tlDriver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5); // set implicit wait temporary
         }
         return tlDriver.Value;
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace fw_webui_selenium_nunit.src.automation.models.configuration
 {
     [DataContract]
-    public class WebUiConfigDto
+    public class WebUiConfig
     {
         [DataMember(Name = "apiUrl")]
         public string ApiUrl { get; set; }

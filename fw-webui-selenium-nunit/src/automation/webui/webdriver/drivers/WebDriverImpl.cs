@@ -6,7 +6,7 @@ namespace fw_webui_selenium_nunit.automation.webui.webdriver.drivers;
 
 public abstract class WebDriverImpl
 {
-       protected WebUiConfigDto _webUiConfigDto;
+       protected WebUiConfig _webUiConfig;
 
        protected WebDriverImpl()
        {
@@ -14,9 +14,9 @@ public abstract class WebDriverImpl
 
        public IWebDriver Create()
        {
-              if (_webUiConfigDto == null)
+              if (_webUiConfig == null)
               {
-                     _webUiConfigDto = WebUiConfigLoader.Instance.WebUiConfigDto;
+                     _webUiConfig = WebUiConfigLoader.Instance.WebUiConfig;
               }
               return SetupDriver();
        }
