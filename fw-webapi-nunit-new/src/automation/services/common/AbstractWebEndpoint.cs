@@ -20,20 +20,17 @@ public class AbstractWebEndpoint
     
     public RestResponse Post(string path)
     {
-        // todo
-        return null;
+        throw new NotImplementedException();
     }
     
     public RestResponse Put(string path)
     {
-        // todo
-        return null;
+        throw new NotImplementedException();
     }
     
     public RestResponse Delete(string path)
     {
-        // todo
-        return null;
+        throw new NotImplementedException();
     }
     
     

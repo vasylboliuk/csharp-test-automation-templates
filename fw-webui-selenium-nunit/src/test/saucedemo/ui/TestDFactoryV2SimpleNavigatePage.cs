@@ -1,32 +1,35 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+﻿using fw_webui_selenium_nunit.automation.webui.webdriver;
+using fw_webui_selenium_nunit.automation.webui.webdriver.drivers;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using WebDriverManager.Helpers;
 
 namespace fw_webui_selenium_nunit.test.saucedemo.ui;
 
-public class TestDummyHardCodedDriverPathSimpleNavigatePage: BaseNUnitUiTest
+public class TestDFactoryV2SimpleNavigatePage: BaseNUnitUiTest
 {
     private IWebDriver _driver;
     
     [SetUp]
     public void Setup()
     {
-        // Note: Chrome Driver should be downloaded and put to this location
-        _driver = new ChromeDriver("C:\\ChromeDriver\\chromedriver_win32");
+        DriverFactoryV2.InitBrowser(Browser.CHROME);
+        _driver = DriverFactoryV2.Driver;
     }
     
     [TearDown]
     public void TearDown()
     {
-        _driver.Quit();
+        DriverFactoryV2.CloseAllDrivers();
     }
     
     [Test]
-    public void TestHardCodedPathLoginByValidUser() 
+    public void TestDriverFactoryV2LoginByValidUser() 
     { 
         _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         _driver.Navigate().GoToUrl("https://www.saucedemo.com/"); 
@@ -34,11 +37,11 @@ public class TestDummyHardCodedDriverPathSimpleNavigatePage: BaseNUnitUiTest
         _driver.FindElement(By.Id("password")).SendKeys("secret_sauce"); 
         _driver.FindElement(By.Id("login-button")).Click(); 
         var appLogo = _driver.FindElement(By.ClassName("app_logo")).Text; 
-        var productsLabel = _driver.FindElement(By.ClassName("header_secondary_container"))
+        var productsLable = _driver.FindElement(By.ClassName("header_secondary_container"))
             .FindElement(By.XPath("./span")).Text; 
         // Validation
         Assert.That("Swag Labs", Is.EqualTo(appLogo));
-        Assert.That("Products", Is.EqualTo(productsLabel));
+        Assert.That("Products", Is.EqualTo(productsLable));
     }
     
 }

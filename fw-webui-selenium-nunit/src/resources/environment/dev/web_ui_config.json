@@ -1,0 +1,8 @@
+{
+  "BaseURL": "https://www.saucedemo.com/",
+  "WebDriverConfig": {
+    "DefaultImplicitWait": 10,
+    "DefaultExplicitWait": 15,
+    "WindowSize": "1920,1200"
+  }
+}

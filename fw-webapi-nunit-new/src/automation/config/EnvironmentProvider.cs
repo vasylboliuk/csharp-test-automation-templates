@@ -16,7 +16,7 @@ namespace fw_webapi_nunit.src.automation.config
     internal class EnvironmentProvider
     {
 
-        private static string ENVIRONMENT_PATH = "src\\resources\\environment";
+        private static string ENVIRONMENT_PATH = Path.Combine("src", "resources", "environment");
 
         private static string ENVIRONMENT_FILE = "web_service_config.json";
 
