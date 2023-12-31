@@ -8,5 +8,6 @@ public class Pages
     }
 
     public static LoginPage LoginPage => new LoginPage();
+    public static ProductsPage ProductsPage => new ProductsPage();
     
 }

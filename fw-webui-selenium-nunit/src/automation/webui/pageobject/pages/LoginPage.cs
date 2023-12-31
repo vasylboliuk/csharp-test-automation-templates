@@ -39,7 +39,6 @@ public class LoginPage: BasePage
 
     public void LoginToSite(string userName, string password)
     {
-        
         EnterUserName(userName);
         EnterPassword(password);
         LoginButton().Click();
