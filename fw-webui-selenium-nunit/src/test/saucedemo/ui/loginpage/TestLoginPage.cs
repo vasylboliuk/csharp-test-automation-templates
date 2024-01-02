@@ -5,13 +5,7 @@ namespace fw_webui_selenium_nunit.test.saucedemo.ui;
 
 public class TestLoginPage: BaseNUnitUiTest
 {
-   
-    [TearDown]
-    public void TearDown()
-    {
-        TLDriverFactory.CloseAllDrivers();
-    }
-    
+  
     [Test]
     public void TestLoginByValidUser() 
     { 

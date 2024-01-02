@@ -12,4 +12,10 @@ public class BaseNUnitUiTest
         TLDriverFactory.GetWebDriver(Browser);
     }
     
+    [TearDown]
+    public void TearDown()
+    {
+        TLDriverFactory.CloseAllDrivers();
+    }
+    
 }
