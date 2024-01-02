@@ -1,4 +1,6 @@
 ﻿using fw_webui_selenium_nunit.automation.webui.webdriver.drivers;
+using fw_webui_selenium_nunit.src.automation.config;
+using fw_webui_selenium_nunit.src.automation.models.configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
@@ -10,14 +12,17 @@ public class DriverFactory
 {
    private WebDriverImpl driverImpl;
 
-   public WebDriverImpl GetWebDriver(Browser browserType)
+   /*
+    * Get Web Driver
+    */
+   public WebDriverImpl GetWebDriver(string browserType)
    {
-      switch (browserType)
+      switch (browserType.ToUpper())
       {
-         case Browser.CHROME:
+         case "CHROME":
             driverImpl = new ChromeDriverImpl();
             break;
-         case Browser.FIREFOX:
+         case "FIREFOX":
             driverImpl = new FirefoxDriverImpl();
             break;
       }

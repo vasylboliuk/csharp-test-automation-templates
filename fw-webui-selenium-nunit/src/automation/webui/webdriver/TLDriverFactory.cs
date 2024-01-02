@@ -7,7 +7,6 @@ namespace fw_webui_selenium_nunit.automation.webui.webdriver;
 public class TLDriverFactory
 {
     private static readonly ThreadLocal<IWebDriver> tlDriver = new ThreadLocal<IWebDriver>();
-    private static Browser browserType = Browser.CHROME;
 
     private TLDriverFactory()
     {
@@ -18,17 +17,26 @@ public class TLDriverFactory
     {
         if (null == tlDriver.Value)
         {
+            throw new ArgumentException("Browser Driver is not initialized. Please setup WebDriver");
+        }
+        return tlDriver.Value;
+    }
+    
+    public static IWebDriver GetWebDriver(string browserType)
+    {
+        if (null == tlDriver.Value)
+        {
             SetWebDriver(browserType);
             tlDriver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5); // set implicit wait temporary
         }
         return tlDriver.Value;
     }
 
-    private static void SetWebDriver(Browser browser)
+    private static void SetWebDriver(string browserType)
     {
         var manager = new TLDriverFactory();
-        var webBrowserImpl = new DriverFactory();
-        var webBrowser = webBrowserImpl.GetWebDriver(browser);
+        var factory = new DriverFactory();
+        var webBrowser = factory.GetWebDriver(browserType);
         tlDriver.Value = (webBrowser.Create());
     }
     

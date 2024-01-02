@@ -1,5 +1,6 @@
 ﻿ using AngleSharp;
-using OpenQA.Selenium;
+ using fw_webui_selenium_nunit.src.automation.models.configuration;
+ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Serilog;
 using WebDriverManager.DriverConfigs.Impl;
@@ -33,17 +34,17 @@ public class ChromeDriverImpl: WebDriverImpl
         ChromeOptions options = new ChromeOptions();
         options.SetLoggingPreference(LogType.Browser, LogLevel.All);
         options.SetLoggingPreference("performance", LogLevel.All);
-        bool headlessMode = false;
-        if (headlessMode)
+        string headlessMode = WebUiConfig.WebDriverConfig.HeadlessMode;
+        string windowsSize = WebUiConfig.WebDriverConfig.WindowSize;
+        if (headlessMode != "No")
         {
-            bool headlessModeNew = false;
-            if (headlessModeNew)
+            if (headlessMode == "New")
             {
                 options.AddArgument("--headless=new");
-                options.AddArgument("--window-size=1920x1080");
+                options.AddArgument($"--window-size={windowsSize}");
             }
             options.AddArgument("--headless");
-            options.AddArgument("--window-size=1920x1080");
+            options.AddArgument($"--window-size={windowsSize}");
         }
         options.PageLoadStrategy = PageLoadStrategy.Eager;
         options.AddArgument("--start-maximized");
