@@ -57,9 +57,10 @@ public class ChromeDriverImpl: WebDriverImpl
 
     private IWebDriver ConfigureTimeouts(IWebDriver driver)
     {
-        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-        driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(15);
-        driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(15);
+        var defaultImplicitWait = WebUiConfig.WebDriverConfig.DefaultImplicitWait;
+        driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(defaultImplicitWait);
+        driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(defaultImplicitWait);
+        driver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(defaultImplicitWait);
         return driver;
     }
    
