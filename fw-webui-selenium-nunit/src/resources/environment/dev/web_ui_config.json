@@ -1,8 +1,9 @@
 {
   "BaseURL": "https://www.saucedemo.com/",
   "WebDriverConfig": {
+    "HeadlessMode": "No",
     "DefaultImplicitWait": 10,
     "DefaultExplicitWait": 15,
-    "WindowSize": "1920,1200"
+    "WindowSize": "1920x1200"
   }
 }
