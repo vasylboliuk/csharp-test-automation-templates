@@ -2,10 +2,11 @@
 
 public class BasePage: WebEntity
 {
-    protected string BaseUrl = "https://www.saucedemo.com/";
+    protected readonly string BaseUrl;
     
     protected BasePage() : base()
     {
+        BaseUrl = WebUiConfig.BaseURL;
     }
 
     public void NavigateTo(string url)

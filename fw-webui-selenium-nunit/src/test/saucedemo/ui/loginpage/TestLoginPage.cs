@@ -6,11 +6,6 @@ namespace fw_webui_selenium_nunit.test.saucedemo.ui;
 public class TestLoginPage: BaseNUnitUiTest
 {
    
-    [SetUp]
-    public void Setup()
-    {
-    }
-    
     [TearDown]
     public void TearDown()
     {

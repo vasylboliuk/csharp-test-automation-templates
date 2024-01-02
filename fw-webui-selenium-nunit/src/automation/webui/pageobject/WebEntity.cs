@@ -12,8 +12,8 @@ public class WebEntity
     
     protected WebEntity()
     {
-        WebDriver = TLDriverFactory.GetWebDriver();
         WebUiConfig = WebUiConfigLoader.Instance.WebUiConfig;
+        WebDriver = TLDriverFactory.GetWebDriver();
     }
 
 }
